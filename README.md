@@ -16,7 +16,7 @@ git clone https://github.com/thimogagliano/Project-Tech-22-23.git
 3. The repository should be cloned on your local device.
 
 - Git Desktop
-1. First of all you have [Github Desktop](https://desktop.github.com/) installed.
+1. First of all, make sure you have [Github Desktop](https://desktop.github.com/) installed.
 2. Go to the webpage of this repository on the '<> Code' tab.
 3. In the corner on the top-right side click the green button '<> Code'.
 4. Click on 'Open with Github Desktop'
