@@ -5,6 +5,34 @@ const port = 3000;
 // source for use of objects in javascript: https://www.w3schools.com/js/js_objects.asp
 const genres = ['Techno', 'House', 'Hardstyle', 'Hardcore', 'R&B', 'Up-tempo', 'Pop', 'Hip-hop', 'Rock', 'Reggae'];
 
+const festivals = [
+    {
+        naam: 'Rotterdam Rave',
+        datum: '24/25 maart 2023',
+        genres: 'Techno',
+    },
+    {
+        naam: 'Intents',
+        datum: '2/3/4 juni 2023',
+        genres: ['Hardcore', 'Hardstyle', 'Up-tempo'],
+    },
+    {
+        naam: 'Verknipt',
+        datum: '8/9 april 2023',
+        genres: ['Techno', 'House'],
+    },
+    {
+        naam: 'Freefest',
+        datum: '17 juni 2023',
+        genres: ['Hardstyle', 'Hardcore', 'Up-tempo'],
+    },
+    {
+        naam: 'By the Creek',
+        datum: '1/2 juli 2023',
+        genres: ['Techno', 'House'],
+    },
+]
+
 const users = [
     {
         gebruikersnaam: 'Festival fanaat',
@@ -65,7 +93,7 @@ app.get('/account', (req, res) => {
 });
 
 app.get('/list', (req, res) => {
-    res.render('./pages/list', {title: "List"})
+    res.render('./pages/list', {title: "List", festivals})
 });
 
 app.get('/results-social', (req, res) => {

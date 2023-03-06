@@ -8,7 +8,11 @@
         <%- include('../partials/header') %>
     </header>
     <main>
-
+        <% festivals.forEach(festivals => { %>
+            <h3>Festival: <%= festivals.naam %></h3>
+            <Li>Datum: <%= festivals.datum %></Li>
+            <li>Muziekgenres: <%= festivals.genres %></li>
+        <% }); %>
     </main>
     <footer>
         <%- include('../partials/footer') %>
