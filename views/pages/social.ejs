@@ -8,24 +8,32 @@
         <%- include('../partials/header') %>
     </header>
     <main>
-        <h3>Zoek naar andere gebruikers</h3>
-        <p> zoek hieronder op gebruikers op basis van je eigen voorkeuren of kies uit bestaande gebruikers</p>
-        <form>
-            <label for="muziekgenres">Muziekgenres</label>
-            <input type="checkbox" id="muziekgenres" name="muziekgenres">
-            <label for="artiesten">Artiesten</label>
-            <input type="checkbox" id="artiesten" name="artiesten">
-            <label for="festivals">festivals</label>
-            <input type="checkbox" id="festivals" name="festivals">
-            <label for="voorkeuren">Voorkeuren</label>
-            <input type="radio" id="voorkeuren" name="voorkeuren">
-            <input type="submit" id="submit" name="submit">
-        </form>
-        <% users.forEach(users => { %>
-            <h3>Gebruikersnaam: <%= users.gebruikersnaam %></h3>
-            <Li>Leeftijd: <%= users.leeftijd %></Li>
-            <li>Genres: <%= users.muziekgenres %></li>
-        <% }); %>
+        <section>
+            <h3>Zoek naar andere gebruikers</h3>
+            <p> zoek hieronder op gebruikers op basis van je eigen voorkeuren of kies uit bestaande gebruikers</p>
+        </section>
+        <section>
+            <form>
+                <label for="muziekgenres">Muziekgenres</label>
+                <input type="checkbox" id="muziekgenres" name="muziekgenres">
+                <label for="artiesten">Artiesten</label>
+                <input type="checkbox" id="artiesten" name="artiesten">
+                <label for="festivals">festivals</label>
+                <input type="checkbox" id="festivals" name="festivals">
+                <label for="voorkeuren">Voorkeuren</label>
+                <input type="radio" id="voorkeuren" name="voorkeuren">
+                <input type="submit" id="submit" name="submit">
+            </form>
+        </section>
+        <section>
+            <% users.forEach(users => { %>
+                <h3><%= users.gebruikersnaam %></h3>
+                <ul>
+                    <li>Leeftijd: <%= users.leeftijd %></li>
+                    <li>Genres: <%= users.muziekgenres %></li>
+                </ul>
+            <% }); %>
+        </section>
     </main>
     <footer>
         <%- include('../partials/footer') %>
