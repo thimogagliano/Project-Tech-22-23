@@ -76,12 +76,15 @@ const users = [
     }
 ];
 
+
 // set view engine to ejs
 // https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
 app.set('view engine', 'ejs');
 
 // use static folder in directory for serving static files
 app.use(express.static('static'));
+
+app.use(express.urlencoded({extended: true}));
 
 // source { title: "Home" }: https://stackoverflow.com/questions/52244909/ejs-node-express-having-a-header-partial-how-to-change-title-for-each-page
 app.get('/home', (req, res) => {
@@ -96,8 +99,10 @@ app.get('/list', (req, res) => {
     res.render('./pages/list', {title: "List", festivals})
 });
 
-app.get('/results-social', (req, res) => {
-    res.render('./pages/results-social', {title: "Results-social"})
+app.post('/socialresults', (req, res) => {
+    const formData = (req.body.genres);
+
+    res.render('./pages/socialresults', {title: "Social results", users, formData})
 });
 
 app.get('/results', (req, res) => {

@@ -35,7 +35,6 @@ footer {
     color: white;
     height: 4em;
     width: 100%;
-    max-width: 320px;
     bottom: 0;  
 }
 
@@ -60,9 +59,18 @@ section {
     margin-top: 1em;
 }
 
+section:last-of-type {
+    margin-bottom: 5em;
+}
+
+section>section {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
 h3 {
     font-size: 20px;
-    margin-top: 1em;
 }
 
 p {
