@@ -26,11 +26,17 @@
             </form>
         </section>
         <section>
-            <% users.forEach(users => { %>
-                <h3><%= users.gebruikersnaam %></h3>
+            <% users.forEach(user => { %>
+                <h3><%= user.gebruikersnaam %></h3>
                 <ul>
-                    <li>Leeftijd: <%= users.leeftijd %></li>
-                    <li>Genres: <%= users.muziekgenres %></li>
+                    <li>Leeftijd: <%= user.leeftijd %></li>
+                    <li>Genres: <% user.muziekgenres.forEach((genre, index) => { %>
+                        <% if (index + 1 < user.muziekgenres.length) { %>
+                            <%= genre + "," %>
+                        <% } else { %>
+                            <%= genre %>
+                        <% } %>
+                    <% }) %></li>
                 </ul>
             <% }); %>
         </section>
