@@ -1,9 +1,55 @@
+const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = 3000;
 
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+const myDB = client.db('users');
+const myColl = myDB.collection('app_users');
+
+
+client.connect(err => {
+  const collection = client.db("users").collection("app_users");
+  // perform actions on the collection object
+  client.close();
+});
+
+
+
 // source for use of objects in javascript: https://www.w3schools.com/js/js_objects.asp
 const genres = ['Techno', 'House', 'Hardstyle', 'Hardcore', 'R&B', 'Up-tempo', 'Pop', 'Hip-hop', 'Rock', 'Reggae'];
+
+const festivals = [
+    {
+        naam: 'Rotterdam Rave',
+        datum: '24/25 maart 2023',
+        genres: 'Techno',
+    },
+    {
+        naam: 'Intents',
+        datum: '2/3/4 juni 2023',
+        genres: ['Hardcore', 'Hardstyle', 'Up-tempo'],
+    },
+    {
+        naam: 'Verknipt',
+        datum: '8/9 april 2023',
+        genres: ['Techno', 'House'],
+    },
+    {
+        naam: 'Freefest',
+        datum: '17 juni 2023',
+        genres: ['Hardstyle', 'Hardcore', 'Up-tempo'],
+    },
+    {
+        naam: 'By the Creek',
+        datum: '1/2 juli 2023',
+        genres: ['Techno', 'House'],
+    },
+]
 
 const users = [
     {
@@ -55,6 +101,8 @@ app.set('view engine', 'ejs');
 // use static folder in directory for serving static files
 app.use(express.static('static'));
 
+app.use(express.urlencoded({extended: true}));
+
 // source { title: "Home" }: https://stackoverflow.com/questions/52244909/ejs-node-express-having-a-header-partial-how-to-change-title-for-each-page
 app.get('/home', (req, res) => {
     res.render('./pages/home', {title: "Home"})
@@ -65,11 +113,25 @@ app.get('/account', (req, res) => {
 });
 
 app.get('/list', (req, res) => {
-    res.render('./pages/list', {title: "List"})
+    res.render('./pages/list', {title: "List", festivals})
 });
 
-app.get('/results-social', (req, res) => {
-    res.render('./pages/results-social', {title: "Results-social"})
+const userSchema = {
+    gebruikersnaam: String,
+    leeftijd: String,
+    muziekgenres: String
+};
+
+app.post('/socialresults', async(req, res) => {
+    const formData = (req.body.genres);
+
+    const query = { 'muziekgenres': formData };
+
+    const cursor = myColl.find(query);
+
+    await cursor.forEach(console.dir);
+
+    res.render('./pages/socialresults', {title: "Social results", users, formData, cursor})
 });
 
 app.get('/results', (req, res) => {

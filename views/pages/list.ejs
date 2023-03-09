@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <%- include('../partials/head') %>
 </head>
-<body>
     <header>
         <%- include('../partials/header') %>
     </header>
     <main>
-
+        <section>
+            <% festivals.forEach(festivals => { %>
+                <section>
+                    <h3>Festival: <%= festivals.naam %></h3>
+                    <li>Datum: <%= festivals.datum %></li>
+                    <li>Muziekgenres: <%= festivals.genres %></li>
+                </section>
+            <% }); %>
+        </section>
     </main>
     <footer>
         <%- include('../partials/footer') %>

@@ -1,0 +1,30 @@
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <main>
+        <h3>Results for: <%= formData %></h3>
+            <% cursor.forEach(match => { %>
+                <section>
+                    <h3><%= match.gebruikersnaam %></h3>
+                    <ul>
+                        <li>Leeftijd: <%= match.leeftijd %></li>
+                        <li>Genres: <% match.muziekgenres.forEach((genre, index) => { %>
+                            <% if (index + 1 < match.muziekgenres.length) { %>
+                                <%= genre + "," %>
+                            <% } else { %>
+                                <%= genre %>
+                            <% } %>
+                        <% }) %></li>
+                    </ul>
+                </section>
+            <% }) %>
+    </main>
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>
