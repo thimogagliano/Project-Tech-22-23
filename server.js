@@ -1,6 +1,24 @@
+const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = 3000;
+
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+const myDB = client.db('users');
+const myColl = myDB.collection('app_users');
+
+
+client.connect(err => {
+  const collection = client.db("users").collection("app_users");
+  // perform actions on the collection object
+  client.close();
+});
+
+
 
 // source for use of objects in javascript: https://www.w3schools.com/js/js_objects.asp
 const genres = ['Techno', 'House', 'Hardstyle', 'Hardcore', 'R&B', 'Up-tempo', 'Pop', 'Hip-hop', 'Rock', 'Reggae'];
@@ -76,7 +94,6 @@ const users = [
     }
 ];
 
-
 // set view engine to ejs
 // https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
 app.set('view engine', 'ejs');
@@ -99,10 +116,22 @@ app.get('/list', (req, res) => {
     res.render('./pages/list', {title: "List", festivals})
 });
 
-app.post('/socialresults', (req, res) => {
+const userSchema = {
+    gebruikersnaam: String,
+    leeftijd: String,
+    muziekgenres: String
+};
+
+app.post('/socialresults', async(req, res) => {
     const formData = (req.body.genres);
 
-    res.render('./pages/socialresults', {title: "Social results", users, formData})
+    const query = { 'muziekgenres': formData };
+
+    const cursor = myColl.find(query);
+
+    await cursor.forEach(console.dir);
+
+    res.render('./pages/socialresults', {title: "Social results", users, formData, cursor})
 });
 
 app.get('/results', (req, res) => {
