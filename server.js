@@ -7,18 +7,12 @@ const port = 3000;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
 const myDB = client.db('users');
 const myColl = myDB.collection('app_users');
 
-
 client.connect(err => {
-  const collection = client.db("users").collection("app_users");
-  // perform actions on the collection object
-  client.close();
+    console.log('Database verbonden');
 });
-
-
 
 // source for use of objects in javascript: https://www.w3schools.com/js/js_objects.asp
 const genres = ['Techno', 'House', 'Hardstyle', 'Hardcore', 'R&B', 'Up-tempo', 'Pop', 'Hip-hop', 'Rock', 'Reggae'];
@@ -123,15 +117,16 @@ const userSchema = {
 };
 
 app.post('/socialresults', async(req, res) => {
+
     const formData = (req.body.genres);
 
     const query = { 'muziekgenres': formData };
-
+    
     const cursor = myColl.find(query);
 
-    await cursor.forEach(console.dir);
+    const data = await cursor.toArray();
 
-    res.render('./pages/socialresults', {title: "Social results", users, formData, cursor})
+    res.render('./pages/socialresults', {title: "Social results", data, formData})
 });
 
 app.get('/results', (req, res) => {

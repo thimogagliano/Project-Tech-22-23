@@ -7,7 +7,7 @@
     </header>
     <main>
         <h3>Results for: <%= formData %></h3>
-            <% cursor.forEach(match => { %>
+            <% data.forEach(match => { %>
                 <section>
                     <h3><%= match.gebruikersnaam %></h3>
                     <ul>
@@ -20,6 +20,9 @@
                             <% } %>
                         <% }) %></li>
                     </ul>
+                    <form>
+                        
+                    </form>
                 </section>
             <% }) %>
     </main>
