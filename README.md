@@ -55,7 +55,7 @@ git clone https://github.com/thimogagliano/Project-Tech-22-23.git
 Voor het installeren van packages gebruik je het volgende in de terminal met daarachter de naam van de package van [npm](https://www.npmjs.com/)
 <code>$npm install</code>
 
-Gebruik hierbij vooral de documentatie die te vinden is op [npm](https://www.npmjs.com/).
+Gebruik hierbij vooral de documentatie die te vinden is op [npm](https://www.npmjs.com/) van het desbetreffende package.
 
 ## Draaien van de Code
 * Developer, draait de code in developer modus met nodemon en scss.
