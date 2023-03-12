@@ -10,6 +10,15 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 const myDB = client.db('users');
 const myColl = myDB.collection('app_users');
 
+// set view engine to ejs
+// https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
+app.set('view engine', 'ejs');
+
+// use static folder in directory for serving static files
+app.use(express.static('public'));
+
+app.use(express.urlencoded({extended: true}));
+
 client.connect(err => {
     console.log('Database verbonden');
 });
@@ -88,14 +97,7 @@ const users = [
     }
 ];
 
-// set view engine to ejs
-// https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
-app.set('view engine', 'ejs');
 
-// use static folder in directory for serving static files
-app.use(express.static('static'));
-
-app.use(express.urlencoded({extended: true}));
 
 // source { title: "Home" }: https://stackoverflow.com/questions/52244909/ejs-node-express-having-a-header-partial-how-to-change-title-for-each-page
 app.get('/home', (req, res) => {
@@ -103,6 +105,7 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/likes', async(req, res) => {
+    // https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/write-operations/change-a-document/
     const query = { liked: true };
 
     const cursor = myColl.find(query);
@@ -120,6 +123,7 @@ app.post('/socialresults', async(req, res) => {
     console.log("test filter")
     const formData = (req.body.genres);
 
+    // https://www.mongodb.com/docs/manual/tutorial/query-arrays/
     const query = { 'muziekgenres': formData };
     
     const cursor = myColl.find(query);
