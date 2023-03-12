@@ -4,21 +4,15 @@ const app = express();
 const port = 3000;
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
 const myDB = client.db('users');
 const myColl = myDB.collection('app_users');
 
-
 client.connect(err => {
-  const collection = client.db("users").collection("app_users");
-  // perform actions on the collection object
-  client.close();
+    console.log('Database verbonden');
 });
-
-
 
 // source for use of objects in javascript: https://www.w3schools.com/js/js_objects.asp
 const genres = ['Techno', 'House', 'Hardstyle', 'Hardcore', 'R&B', 'Up-tempo', 'Pop', 'Hip-hop', 'Rock', 'Reggae'];
@@ -108,35 +102,53 @@ app.get('/home', (req, res) => {
     res.render('./pages/home', {title: "Home"})
 });
 
-app.get('/account', (req, res) => {
-    res.render('./pages/account', {title: "Account"})
+app.get('/likes', async(req, res) => {
+    const query = { liked: true };
+
+    const cursor = myColl.find(query);
+
+    const likes = await cursor.toArray();
+    
+    res.render('./pages/likes', {title: "Likes", likes});
 });
 
 app.get('/list', (req, res) => {
     res.render('./pages/list', {title: "List", festivals})
 });
 
-const userSchema = {
-    gebruikersnaam: String,
-    leeftijd: String,
-    muziekgenres: String
-};
-
 app.post('/socialresults', async(req, res) => {
+    console.log("test filter")
     const formData = (req.body.genres);
 
     const query = { 'muziekgenres': formData };
-
+    
     const cursor = myColl.find(query);
 
-    await cursor.forEach(console.dir);
+    const data = await cursor.toArray();
 
-    res.render('./pages/socialresults', {title: "Social results", users, formData, cursor})
+    console.log(data);
+
+    res.render('./pages/socialresults', {title: "Social results", data, formData});
 });
 
-app.get('/results', (req, res) => {
-    res.render('./pages/results', {title: "Results"})
+app.post('/results', async(req, res) => {
+    const likedUser = (req.body.like);
+    console.log(likedUser);
+    // https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/write-operations/change-a-document/
+    const filter = { gebruikersnaam: likedUser};
+
+    const updateDocument = { $set: { liked: true} };
+
+    const update = await myColl.updateOne(filter, updateDocument);
+
+    // const update = await myColl.updateOne({_id: new ObjectId(id), $set: {liked: true}});
+
+    res.render('./pages/results', {title: "Results", likedUser});
 });
+
+// app.get('/results', (req, res) => {
+//     res.render('./pages/results', {title: "Results"})
+// });
 
 app.get('/social', (req, res) => {
     res.render('./pages/social', {title: "Social", users, genres},)

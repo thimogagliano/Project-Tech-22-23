@@ -6,24 +6,23 @@
         <%- include('../partials/header') %>
     </header>
     <main>
-        <h3>Results for: <%= formData %></h3>
         <section>
-            <% data.forEach(match => { %>
+            <% likes.forEach(like => { %>
                 <section>
-                    <h3><%= match.gebruikersnaam %></h3>
+                    <h3><%= like.gebruikersnaam %></h3>
                     <ul>
-                        <li>Leeftijd: <%= match.leeftijd %></li>
-                        <li>Genres: <% match.muziekgenres.forEach((genre, index) => { %>
-                            <% if (index + 1 < match.muziekgenres.length) { %>
+                        <li>Leeftijd: <%= like.leeftijd %></li>
+                        <li>Genres: <% like.muziekgenres.forEach((genre, index) => { %>
+                            <% if (index + 1 < like.muziekgenres.length) { %>
                                 <%= genre + "," %>
                             <% } else { %>
                                 <%= genre %>
                             <% } %>
                         <% }) %></li>
-                        <li>Objectid: <%= match._id %></li>
+                        <li>Objectid: <%= like._id %></li>
                     </ul>
                     <form action="/results" method="post">
-                        <button name="like" type="submit" value="<%= match.gebruikersnaam %>">Like</button>
+                        <button name="like" type="submit" value="<%= like.gebruikersnaam %>">Remove</button>
                     </form>
                 </section>
             <% }) %>
