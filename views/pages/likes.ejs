@@ -7,6 +7,9 @@
     </header>
     <main>
         <section>
+            <h3><%= title %></h3>
+        </section>
+        <section>
             <% likes.forEach(like => { %>
                 <section>
                     <h3><%= like.gebruikersnaam %></h3>
@@ -19,10 +22,9 @@
                                 <%= genre %>
                             <% } %>
                         <% }) %></li>
-                        <li>Objectid: <%= like._id %></li>
                     </ul>
                     <form action="/results" method="post">
-                        <button name="like" type="submit" value="<%= like.gebruikersnaam %>">Remove</button>
+                        <button name="like" type="submit" value="<%= like.gebruikersnaam %>"><img src="/images/user-liked-icon.svg"/></button>
                     </form>
                 </section>
             <% }) %>

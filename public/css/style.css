@@ -1,0 +1,150 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  list-style: none;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+main {
+  width: 100%;
+}
+
+header {
+  background-color: #201030;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  width: 100%;
+  color: #e08c46;
+  padding: 0.2em;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 1em;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+select {
+  margin-bottom: 1.5em;
+  padding: 0.5em;
+  width: 10em;
+  border: 2px solid #e08c46;
+  border-radius: 2px;
+}
+
+input {
+  padding: 0.5em;
+  background-color: #1160a3;
+  border: none;
+  border-radius: 5px;
+  color: #fdfdfd;
+  font-weight: 600;
+  width: 10em;
+}
+
+button {
+  background-color: #d3d3d3;
+  text-decoration: none;
+  border: none;
+}
+button img {
+  width: 30px;
+  height: 30px;
+}
+
+footer {
+  position: fixed;
+  background-color: #201030;
+  color: white;
+  height: 5.5em;
+  width: 100%;
+  bottom: 0;
+}
+
+ul {
+  margin-bottom: 0.5em;
+}
+
+nav {
+  margin-top: 0.5em;
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+}
+nav ul li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+nav ul li a {
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  text-decoration: none;
+  color: #e08c46;
+  margin-top: 0.2em;
+}
+nav ul li a img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.2em;
+}
+
+section {
+  max-width: 100%;
+  margin: 1em;
+  margin-top: 1em;
+}
+section section {
+  border: 2px solid #e08c46;
+  background-color: #d3d3d3;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+section section h3 {
+  text-align: left;
+  font-size: 20px;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #a73534;
+}
+section h3 {
+  text-align: center;
+  font-size: 24px;
+  border-bottom: 3px solid #a73534;
+  padding-bottom: 0.2em;
+}
+
+section.succeslike {
+  margin-top: 10em;
+}
+
+section:last-of-type {
+  margin-bottom: 7em;
+}
+
+p {
+  margin-top: 1em;
+  text-align: center;
+}
