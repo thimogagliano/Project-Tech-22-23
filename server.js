@@ -1,11 +1,17 @@
 /* eslint-disable */
 // https://learn.coderslang.com/0023-eslint-disable-for-specific-lines-files-and-folders/#:~:text=Ignore%20multiple%20files%20or%20folders,eslintignore%20in%20the%20root%20catalog.
+
+// require variabelen packages/modules
 const dotenv = require('dotenv').config();
 const express = require('express');
-const app = express();
-const port = 3000;
-
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const festivals = require('./public/scripts/festivals');
+
+// express variabelen
+const app = express();
+
+// variabelen
+const port = 3000;
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {
     useNewUrlParser: true,
@@ -15,28 +21,25 @@ const client = new MongoClient(uri, {
 const myDB = client.db('users');
 const myColl = myDB.collection('app_users');
 
-const festivals = require('./public/scripts/festivals');
-
 // set view engine to ejs
 // https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
 app.set('view engine', 'ejs');
 
-// use static folder in directory for serving static files
+// use static public folder in directory for serving static files
 app.use(express.static('public'));
 
+// voor gebruik in POST requests
+// https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+// Verbindening met database in MongoDb
 client.connect((err) => {
     console.log('Database verbonden');
 });
 
-// source for use of objects in javascript: https://www.w3schools.com/js/js_objects.asp
+// source { title: "" }: https://stackoverflow.com/questions/52244909/ejs-node-express-having-a-header-partial-how-to-change-title-for-each-page
 
-// source { title: "Home" }: https://stackoverflow.com/questions/52244909/ejs-node-express-having-a-header-partial-how-to-change-title-for-each-page
-app.get('/home', (req, res) => {
-    res.render('./pages/home', { title: 'Home' });
-});
-
+// routes
 app.get('/likes', async (req, res) => {
     // https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/write-operations/change-a-document/
     const query = { liked: true };
@@ -87,14 +90,11 @@ app.post('/results', async (req, res) => {
     res.render('./pages/results', { title: 'Results', likedUser });
 });
 
-// app.get('/results', (req, res) => {
-//     res.render('./pages/results', {title: "Results"})
-// });
-
 app.get('/social', (req, res) => {
     res.render('./pages/social', { title: 'Social' });
 });
 
+// Start server op port: port variabele
 app.listen(port, () => {
     console.log('draait op port', port);
 });

@@ -1,4 +1,5 @@
 /* eslint-disable */
+// source for use of objects in javascript: https://www.w3schools.com/js/js_objects.asp
 module.exports = [
     {
         naam: 'Rotterdam Rave',
