@@ -69,5 +69,8 @@ This project is [MIT](https://github.com/thimogagliano/Project-Tech-22-23/blob/m
 
 ## Geraadpleegde Bronnen
 
+#### Readme
+- https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
+
 
 
