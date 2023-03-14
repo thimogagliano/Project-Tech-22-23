@@ -6,6 +6,9 @@
         <%- include('../partials/header') %>
     </header>
     <main>
+        <section class="titlesection">
+            <h3><%= title %></h3>
+        </section>
         <section>
             <% likes.forEach(like => { %>
                 <section>
@@ -19,10 +22,9 @@
                                 <%= genre %>
                             <% } %>
                         <% }) %></li>
-                        <li>Objectid: <%= like._id %></li>
                     </ul>
                     <form action="/results" method="post">
-                        <button name="like" type="submit" value="<%= like.gebruikersnaam %>">Remove</button>
+                        <button name="like" type="submit" value="<%= like.gebruikersnaam %>"><img src="/images/user-liked-icon.svg"/></button>
                     </form>
                 </section>
             <% }) %>

@@ -6,13 +6,14 @@
         <%- include('../partials/header') %>
     </header>
     <main>
-        <section>
-            <h3>Zoek naar andere gebruikers</h3>
+        <section class="titlesection">
+            <h3><%= title %></h3>
+            <p>Zoek naar andere gebruikers op basis van je favoriete muziekgenre(s)</p>
         </section>
         <section>
             <form action="/socialresults" method="post">
                 <label for="genres">Kies muziekgenres</label>
-                <select id="genres" name="genres" size="10" multiple>
+                <select id="genres" name="genres" size="1" multiple>
                     <option value="Techno">Techno</option>
                     <option value="House">House</option>
                     <option value="Hardstyle">Hardstyle</option>
@@ -24,25 +25,8 @@
                     <option value="Rock">Rock</option>
                     <option value="Reggae">Reggae</option>
                 </select>
-                <input type="submit" value="zoeken">
+                <input type="submit" value="Zoeken">
             </form>
-        </section>
-        <section>
-            <% users.forEach(user => { %>
-                <section>
-                    <h3><%= user.gebruikersnaam %></h3>
-                    <ul>
-                        <li>Leeftijd: <%= user.leeftijd %></li>
-                        <li>Genres: <% user.muziekgenres.forEach((genre, index) => { %>
-                            <% if (index + 1 < user.muziekgenres.length) { %>
-                                <%= genre + "," %>
-                            <% } else { %>
-                                <%= genre %>
-                            <% } %>
-                        <% }) %></li>
-                    </ul>
-                </section>
-            <% }); %>
         </section>
     </main>
     <footer>
