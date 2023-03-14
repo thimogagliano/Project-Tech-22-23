@@ -1,5 +1,4 @@
 /* eslint-disable */
-// https://learn.coderslang.com/0023-eslint-disable-for-specific-lines-files-and-folders/#:~:text=Ignore%20multiple%20files%20or%20folders,eslintignore%20in%20the%20root%20catalog.
 
 // require variabelen packages/modules
 const dotenv = require('dotenv').config();
@@ -18,8 +17,8 @@ const client = new MongoClient(uri, {
     useUnifiedTopology: true,
     serverApi: ServerApiVersion.v1
 });
-const myDB = client.db('users');
-const myColl = myDB.collection('app_users');
+const myDB = client.db(process.env.DB_NAME);
+const myColl = myDB.collection(process.env.DB_COLL);
 
 // set view engine to ejs
 // https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
