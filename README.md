@@ -1,4 +1,6 @@
 # Festifriends
+![festifriends](https://user-images.githubusercontent.com/94388546/224983000-0180ca8d-8666-412e-8523-1927652d267a.jpg)
+
 
 Dit is de repository van het project Festifriends van Blok-Tech. We hebben binnen Blok-Tech de opdracht gekregen om een matching applicatie te maken met een thema naar keuze. Hierin verwerken we een feature door middel van back-end en front-end code. In de repository is naast de code ook een wiki te vinden waarin het project en keuzes worden uitgelegd, veel plezier!
 
