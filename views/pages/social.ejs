@@ -13,7 +13,7 @@
         <section>
             <form action="/socialresults" method="post">
                 <label for="genres">Kies muziekgenres</label>
-                <select id="genres" name="genres" size="1" multiple>
+                <select id="genres" name="genres" size="10" required>
                     <option value="Techno">Techno</option>
                     <option value="House">House</option>
                     <option value="Hardstyle">Hardstyle</option>
@@ -25,12 +25,17 @@
                     <option value="Rock">Rock</option>
                     <option value="Reggae">Reggae</option>
                 </select>
-                <input type="submit" value="Zoeken">
+                <p class="formError"></p>
+                <input class="zoekKnop" type="submit" value="Zoeken">
             </form>
         </section>
     </main>
     <footer>
+        <!-- Link naar top van pagina, komt pas naar boven wanneer er voldoende gescrollt is-->
+        <a href="#" class="naarBegin">Naar begin</a>
         <%- include('../partials/footer') %>
     </footer>
+    <script src="/scripts/formvalidation.js"></script>
+    <script src="/scripts/api.js"></script>
 </body>
 </html>

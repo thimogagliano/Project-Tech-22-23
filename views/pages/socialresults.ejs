@@ -6,10 +6,11 @@
         <%- include('../partials/header') %>
     </header>
     <main>
-        <section>
-            <h3>Results for: <%= formData %></h3>
+        <section class="titlesection">
+            <h3>Resultaten voor: <%= formData %></h3>
         </section>
         <section>
+            <!-- Voor elke gevonden gebruiker wordt een nieuw section gemaakt met daarin een knop om de gebruiker toe te voegen aan likes -->
             <% data.forEach(match => { %>
                 <section>
                     <h3><%= match.gebruikersnaam %></h3>
@@ -23,15 +24,18 @@
                             <% } %>
                         <% }) %></li>
                     </ul>
-                    <form action="/results" method="post">
-                        <button name="like" type="submit" value="<%= match.gebruikersnaam %>"><img src="/images/user-like-icon.svg"/></button>
+                    <form class="likeForm" action="/results" method="post">
+                        <button name="like" type="submit" value="<%= match.gebruikersnaam %>"><img src="/images/user-like-icon.svg" alt="like icoontje"/>Like</button>
                     </form>
                 </section>
             <% }) %>
         </section>
     </main>
     <footer>
+        <!-- Link naar top van pagina, komt pas naar boven wanneer er voldoende gescrollt is-->
+        <a href="#" class="naarBegin">Naar begin</a>
         <%- include('../partials/footer') %>
     </footer>
+    <script src="/scripts/api.js"></script>
 </body>
 </html>
