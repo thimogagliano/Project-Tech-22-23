@@ -74,5 +74,36 @@ This project is [MIT](https://github.com/thimogagliano/Project-Tech-22-23/blob/m
 #### Readme
 - https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
 
+#### Wiki: Concept
+- https://festivalfans.nl/
+- https://followthebeat.nl/agenda
+- https://coolors.co/
 
+#### Wiki: Configuration
+- https://cbea.ms/git-commit/
+- https://desktop.github.com/
+- https://github.com/Binaryify/OneDark-Pro
+- https://dev.to/andrewbaisden/how-to-use-eslint-and-prettier-for-code-analysis-and-formatting-1b4g
+- https://learn.coderslang.com/0023-eslint-disable-for-specific-lines-files-and-    folders/#:~:text=Ignore%20multiple%20files%20or%20folders,eslintignore%20in%20the%20root%20catalog.
+- https://dev.to/tillsanders/eslint-not-working-in-vscode-help-build-a-troubleshooting-checklist-fdc#:~:text=Open%20the%20command%20palette%20(%20Ctrl,and%20confirm%20with%20'Accept'.
 
+#### Wiki: Server-side
+- https://pugjs.org/api/getting-started.html
+- https://squirrelly.js.org/
+- https://ejs.co/
+
+#### Wiki: Cliënt-side
+- https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/
+- https://www.quirksmode.org/blog/archives/2021/02/progressive_enh_1.html
+- https://archive.hankchizljaw.com/wrote/the-power-of-progressive-enhancement/
+- https://www.bol.com/nl/nl/
+- https://www.youtube.com/watch?v=T8EYosX4NOo
+- https://codyhouse.co/gem/back-to-top/
+- https://css-tricks.com/how-to-make-an-unobtrusive-scroll-to-top-button/
+- https://codyhouse.co/gem/back-to-top/
+- https://css-tricks.com/how-to-make-an-unobtrusive-scroll-to-top-button/
+- https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+- https://moderncss.dev/custom-select-styles-with-pure-css/
+- https://flaviocopes.com/how-to-add-event-listener-multiple-elements-javascript/
+- https://sass-lang.com/guide
+- https://www.youtube.com/watch?v=EsSHjDo0Y3E
