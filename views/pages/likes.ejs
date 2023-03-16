@@ -10,6 +10,7 @@
             <h3><%= title %></h3>
         </section>
         <section>
+            <!-- Voor elke like wordt er een nieuwe section gemaakt van de gebruiker met daarbij een knop om de gebruiker te kunnen verwijderen uit opgeslagen likes-->
             <% likes.forEach(like => { %>
                 <section>
                     <h3><%= like.gebruikersnaam %></h3>
@@ -23,15 +24,18 @@
                             <% } %>
                         <% }) %></li>
                     </ul>
-                    <form action="/results" method="post">
-                        <button name="like" type="submit" value="<%= like.gebruikersnaam %>"><img src="/images/user-liked-icon.svg"/></button>
+                    <form class="likeFormRemove" action="/results" method="post">
+                        <button name="like" type="submit" value="<%= like.gebruikersnaam %>"><img src="/images/user-liked-icon.svg" alt="geliked icoontje"/>Remove</button>
                     </form>
                 </section>
             <% }) %>
         </section>
     </main>
     <footer>
+        <!-- Link naar top van pagina, komt pas naar boven wanneer er voldoende gescrollt is-->
+        <a href="#" class="naarBegin">Naar begin</a>
         <%- include('../partials/footer') %>
     </footer>
+    <script src="/scripts/api.js"></script>
 </body>
 </html>

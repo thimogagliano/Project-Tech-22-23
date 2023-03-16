@@ -9,6 +9,7 @@
             <h3><%= title %></h3>
         </section>
         <section>
+            <!-- Voor elk festival wordt er een nieuwe section gemaakt-->
             <% festivals.forEach(festivals => { %>
                 <section>
                     <h3>Festival: <%= festivals.naam %></h3>
@@ -19,7 +20,10 @@
         </section>
     </main>
     <footer>
+        <!-- Link naar top van pagina, komt pas naar boven wanneer er voldoende gescrollt is-->
+        <a href="#" class="naarBegin">Naar begin</a>
         <%- include('../partials/footer') %>
     </footer>
+    <script src="/scripts/api.js"></script>
 </body>
 </html>
