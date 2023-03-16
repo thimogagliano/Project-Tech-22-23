@@ -84,7 +84,7 @@ This project is [MIT](https://github.com/thimogagliano/Project-Tech-22-23/blob/m
 - https://desktop.github.com/
 - https://github.com/Binaryify/OneDark-Pro
 - https://dev.to/andrewbaisden/how-to-use-eslint-and-prettier-for-code-analysis-and-formatting-1b4g
-- https://learn.coderslang.com/0023-eslint-disable-for-specific-lines-files-and-    folders/#:~:text=Ignore%20multiple%20files%20or%20folders,eslintignore%20in%20the%20root%20catalog.
+- https://learn.coderslang.com/0023-eslint-disable-for-specific-lines-files-and-folders/#:~:text=Ignore%20multiple%20files%20or%20folders,eslintignore%20in%20the%20root%20catalog.
 - https://dev.to/tillsanders/eslint-not-working-in-vscode-help-build-a-troubleshooting-checklist-fdc#:~:text=Open%20the%20command%20palette%20(%20Ctrl,and%20confirm%20with%20'Accept'.
 
 #### Wiki: Server-side
